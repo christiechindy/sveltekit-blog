@@ -15,8 +15,10 @@ export default {
             colors: {
                 "my": {
                     purple: "#7800F1",
+                    blue: "#000AF1",
                     dark_green: "#0A2E27",
                     cream: "#FFE9C8",
+                    text_gray: "#A5A5A5",
                     gray: "#A3A3A3",
                     line_gray: "#DBDBDB",
                     line_d_gray: "#AAAAAA",
