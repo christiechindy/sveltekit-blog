@@ -19,6 +19,7 @@ export default {
                     cream: "#FFE9C8",
                     gray: "#A3A3A3",
                     line_gray: "#DBDBDB",
+                    line_d_gray: "#AAAAAA",
                 }
             }
         },
