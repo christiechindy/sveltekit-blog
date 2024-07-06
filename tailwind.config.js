@@ -15,6 +15,7 @@ export default {
             colors: {
                 "my": {
                     purple: "#7800F1",
+                    purple_disabled: "#D1A3FF",
                     blue: "#000AF1",
                     dark_green: "#0A2E27",
                     cream: "#FFE9C8",
