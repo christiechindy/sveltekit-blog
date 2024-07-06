@@ -53,10 +53,13 @@
         }
     }
 
+    let isLoading = false;
     const handleSignup = async () => {
         if (isFormValid) {
+            isLoading = true;
             const ax = await axios.post("/api/sign-up", signUpData);
             const res:TApiResp = ax?.data;
+            isLoading = false;
             if (res.meta.status) {
                 goto("/login");
             }
@@ -75,7 +78,7 @@
             <AuthInput label="password" bind:value={signUpData.password} type="password" hasFocused={hasFocused.password} bind:error={errors.password} />
         </div>
 
-        <Button text="Sign Up" on:click={handleSignup} disabled={!isFormValid} />
+        <Button text="Sign Up" on:click={handleSignup} disabled={!isFormValid} isLoading={true} />
 
         <div class="text-sm text-my-text_gray mt-8">Already have an account? <a class="text-my-purple font-medium hover:text-my-blue transition duration-300 ease-in-out" href="/login">Login!</a></div>
     </div>
