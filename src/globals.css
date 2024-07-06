@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Rancho&family=Readex+Pro:wght@160..700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, button {
+    font-family: "Readex Pro";
+}
