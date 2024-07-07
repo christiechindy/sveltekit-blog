@@ -1,9 +1,9 @@
-import { json } from '@sveltejs/kit';
+import { json, type RequestHandler } from '@sveltejs/kit';
 import UserSchema from '../../../models/UserSchema.js';
 import { failMeta, successMeta } from '$lib/meta.js';
 import * as bcrypt from "bcrypt";
 
-export const POST = async ({request}) => {
+export const POST:RequestHandler = async ({request}) => {
     try {
         const {full_name, username, password} = await request.json();
 
