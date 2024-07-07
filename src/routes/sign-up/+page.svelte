@@ -75,7 +75,7 @@
         <Modal title="Success!" message="Yeay! You've successfully registered! Now, please login!" btnText="login" btnLink="/login" />
     {/if}
 
-    <div class="w-fit wrapper flex flex-col items-center justify-center gap-7">
+    <form class="w-fit wrapper flex flex-col items-center justify-center gap-7" on:submit|preventDefault={handleSignup}>
         <AuthTitle title="Register" />
 
         <div>
@@ -86,10 +86,10 @@
             <AuthInput label="password" bind:value={signUpData.password} type="password" hasFocused={hasFocused.password} bind:error={errors.password} />
         </div>
 
-        <Button text="Sign Up" on:click={handleSignup} disabled={!isFormValid} isLoading={isLoading} />
+        <Button text="Sign Up" type="submit" disabled={!isFormValid} isLoading={isLoading} />
 
         <div class="text-sm text-red-600 max-w-96">{errorSignUp}</div>
 
         <div class="text-sm text-my-text_gray mt-8 self-start">Already have an account? <a class="text-my-purple font-medium hover:text-my-blue transition duration-300 ease-in-out" href="/login">Login!</a></div>
-    </div>
+    </form>
 </div>
