@@ -3,6 +3,7 @@ import {UserSchema} from "../../../models/UserSchema"
 import { failMeta, successMeta } from "$lib/meta";
 import * as bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "$env/static/private";
 
 export const POST:RequestHandler = async ({ request }) => {
     try {
@@ -31,8 +32,8 @@ export const POST:RequestHandler = async ({ request }) => {
                 })
             } else {
                 const token = jwt.sign({
-                    username: findUser[0].username
-                }, "jdf8g3");
+                    id: findUser[0]._id
+                }, JWT_SECRET);
                 const headers = new Headers();
                 headers.append('set-cookie', `accessToken=${token}; HttpOnly; Path=/; Max-Age=3600`);
                 return json({
