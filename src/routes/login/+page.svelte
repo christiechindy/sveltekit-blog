@@ -66,7 +66,7 @@
 </script>
 
 <div class="page flex justify-center items-center h-screen">
-    <div class="w-fit wrapper flex flex-col items-center justify-center gap-7">
+    <form class="w-fit wrapper flex flex-col items-center justify-center gap-7" on:submit|preventDefault={handleLogin}>
         <AuthTitle title="Login" />
 
         <div>
@@ -74,10 +74,10 @@
             <AuthInput label="password" bind:value={loginData.password} hasFocused={hasFocused.password} bind:error={errors.password} type="password" />
         </div>
 
-        <Button text="login" on:click={handleLogin} disabled={!isFormValid} isLoading={isLoading} />
+        <Button type="submit" text="login" disabled={!isFormValid} isLoading={isLoading} />
 
         <div class="text-sm text-red-600 max-w-96">{errorLogin}</div>
 
         <div class="text-sm text-my-text_gray mt-8 self-start">Don't have an account? <a class="text-my-purple font-medium hover:text-my-blue transition duration-300 ease-in-out" href="/sign-up">Register!</a></div>
-    </div>
+    </form>
 </div>
