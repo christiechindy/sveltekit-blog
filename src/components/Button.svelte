@@ -14,7 +14,7 @@
     }
 </script>
 
-<button on:click={dispatchFunc} class="text-center capitalize w-full bg-my-purple rounded-xl py-2 text-white hover:bg-my-dark_green transition duration-500 ease-in-out disabled:bg-my-purple_disabled disabled:cursor-not-allowed flex justify-center" disabled={disabled}>
+<button on:click={dispatchFunc} class="text-center capitalize w-full bg-my-purple rounded-xl py-2 text-white hover:bg-my-dark_green transition duration-500 ease-in-out disabled:bg-my-purple_disabled disabled:cursor-not-allowed flex justify-center" disabled={disabled || isLoading}>
     {#if isLoading}
         <Circle size="24" unit="px" color="#7800F1" />
     {:else}
