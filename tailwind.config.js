@@ -4,6 +4,9 @@ export default {
         './src/**/*.{html,js,svelte,ts}',
     ],
     theme: {
+        fontFamily: {
+            "logo": ["Rancho"]
+        },
         extend: {
             borderWidth: {
                 "1.5": "1.5px",
