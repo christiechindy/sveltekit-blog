@@ -5,7 +5,7 @@
     import { z } from "zod";
     import axios from "axios";
     import type { TApiResp } from "../../types/ApiTypes";
-    import { goto } from "$app/navigation";
+    import Modal from "../../components/Modal.svelte";
 
     interface ISignUp {
         full_name: string,
@@ -54,6 +54,8 @@
     }
 
     let isLoading = false;
+    let errorSignUp = "";
+    let isModalToLoginShow = false;
     const handleSignup = async () => {
         if (isFormValid) {
             isLoading = true;
@@ -61,13 +63,19 @@
             const res:TApiResp = ax?.data;
             isLoading = false;
             if (res.meta.status) {
-                goto("/login");
+                isModalToLoginShow = true;
+            } else {
+                errorSignUp = res.meta.message;
             }
         }
     }
 </script>
-<div class="page flex justify-center align-middle h-screen">
-    <div class="w-fit wrapper flex flex-col align-middle justify-center gap-7">
+<div class="page flex justify-center items-center h-screen">
+    {#if isModalToLoginShow}
+        <Modal title="Success!" message="Yeay! You've successfully registered! Now, please login!" btnText="login" btnLink="/login" />
+    {/if}
+
+    <div class="w-fit wrapper flex flex-col items-center justify-center gap-7">
         <AuthTitle title="Register" />
 
         <div>
@@ -78,8 +86,10 @@
             <AuthInput label="password" bind:value={signUpData.password} type="password" hasFocused={hasFocused.password} bind:error={errors.password} />
         </div>
 
-        <Button text="Sign Up" on:click={handleSignup} disabled={!isFormValid} isLoading={true} />
+        <Button text="Sign Up" on:click={handleSignup} disabled={!isFormValid} isLoading={isLoading} />
 
-        <div class="text-sm text-my-text_gray mt-8">Already have an account? <a class="text-my-purple font-medium hover:text-my-blue transition duration-300 ease-in-out" href="/login">Login!</a></div>
+        <div class="text-sm text-red-600 max-w-96">{errorSignUp}</div>
+
+        <div class="text-sm text-my-text_gray mt-8 self-start">Already have an account? <a class="text-my-purple font-medium hover:text-my-blue transition duration-300 ease-in-out" href="/login">Login!</a></div>
     </div>
 </div>
