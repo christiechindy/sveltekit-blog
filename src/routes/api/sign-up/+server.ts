@@ -1,5 +1,5 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
-import UserSchema from '../../../models/UserSchema.js';
+import {UserSchema} from '../../../models/UserSchema.js';
 import { failMeta, successMeta } from '$lib/meta.js';
 import * as bcrypt from "bcrypt";
 
