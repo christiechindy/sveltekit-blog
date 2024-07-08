@@ -9,7 +9,6 @@ import { BlogSchema } from "../../models/BlogSchema";
 // }
 
 export const load = async () => {
-    console.log("--------------------------mni");
     try {
         const blogs = await BlogSchema.find().lean().exec();
         for (let i=0; i < blogs.length; i++) {
