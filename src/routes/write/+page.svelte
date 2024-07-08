@@ -53,7 +53,7 @@
 
         <BlogInput label="description" bind:value={description} type="textarea" />
 
-        <button class="w-[60%] py-3 rounded-xl bg-my-dark_green text-white" type="submit">Publish</button>
+        <button class="w-[60%] py-3 rounded-xl bg-my-dark_green text-white disabled:bg-green-200 disabled:cursor-not-allowed disabled:text-my-dark_green" disabled={isLoading} type="submit">Publish</button>
     </form>
 </div>
 
