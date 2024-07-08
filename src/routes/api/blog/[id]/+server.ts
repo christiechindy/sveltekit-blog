@@ -6,7 +6,6 @@ export const PUT = async ({request, url}) => {
     try {
         const blogID = url.pathname.split("blog/")[1];
         const {title, description} = await request.json();
-        console.log("putttxx", blogID, title, description);
 
         await BlogSchema.findByIdAndUpdate(blogID, {title, description}, { new: true });
 
