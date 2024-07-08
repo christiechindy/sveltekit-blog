@@ -10,7 +10,7 @@
     <div class="content ml-12 mt-11">
         <div class="posts">
             {#each data.blogs as blog}
-                <APost date="22 June" description={blog.description} title={blog.title} imgSrc={blog.picture} />
+                <APost date={blog.createdAt} description={blog.description} title={blog.title} imgSrc={blog.picture} link={`/read?id=${blog._id}`} />
             {/each}
         </div>
     </div>
