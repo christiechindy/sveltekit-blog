@@ -9,8 +9,11 @@
 
     <div class="content ml-12 mt-11">
         <div class="posts">
+            {#if data.blogs.length === 0}
+                <div class="italic text-my-text_gray">No posts yet</div>
+            {/if}
             {#each data.blogs as blog}
-                <APost date={blog.createdAt} description={blog.description} title={blog.title} imgSrc={blog.picture} link={`/read?id=${blog._id}`} />
+                <APost date={blog.createdAt} description={blog.description.substring(0,187)+"..."} title={blog.title} imgSrc={blog.picture} link={`/read?id=${blog._id}`} />
             {/each}
         </div>
     </div>
