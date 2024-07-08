@@ -1,9 +1,21 @@
 <script lang="ts">
+    import axios from "axios";
     import Header from "../../components/Header.svelte";
+    import Modal from "../../components/Modal.svelte";
     import DeleteIcon from "../../icons/DeleteIcon.svelte";
     import PencilIcon from "../../icons/PencilIcon.svelte";
+    import { goto } from "$app/navigation";
+  import type { TApiResp } from "../../types/ApiTypes";
+    
+    export let data;
 
-    export let data: {blog};
+    const handleDelete = async() => {
+        const ax = await axios.delete(`/api/blog/${data.id}`);
+        const res:TApiResp = ax?.data;
+        if (res.meta.status) {
+            goto("/home");
+        }
+    }
 </script>
 <div class="page">
     <Header />
@@ -16,7 +28,7 @@
             <div class="title font-semibold text-7xl leading-tight">{data.blog.title}</div>
             <div class="icons flex gap-4 items-center">
                 <PencilIcon />
-                <DeleteIcon />
+                <DeleteIcon on:click={handleDelete} />
             </div>
         </div>
         <div class="description leading-7">{data.blog.description}</div>

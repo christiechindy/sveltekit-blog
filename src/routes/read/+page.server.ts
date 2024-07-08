@@ -1,3 +1,4 @@
+import type { Actions } from '@sveltejs/kit';
 import { BlogSchema } from '../../models/BlogSchema.js';
 
 export async function load({ url }) {
@@ -7,9 +8,9 @@ export async function load({ url }) {
         const blog = await BlogSchema.findById(id).lean().exec();
         blog._id = blog._id.toString();
         blog.author = blog.author.toString();
-        console.log("blog", blog);
+        // console.log("blog", blog);
     
-        return {blog};
+        return {blog, id};
     } catch (err) {
         return null;
     }
