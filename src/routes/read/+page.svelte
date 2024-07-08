@@ -27,7 +27,7 @@
         <div class="flex gap-5 items-start">
             <div class="title font-semibold text-7xl leading-tight">{data.blog.title}</div>
             <div class="icons flex gap-4 items-center">
-                <PencilIcon />
+                <PencilIcon link={`/edit?id=${data.id}`} />
                 <DeleteIcon on:click={handleDelete} />
             </div>
         </div>
