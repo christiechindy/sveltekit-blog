@@ -11,7 +11,6 @@
 
     import type {PageData} from "./$types";
     export let data:PageData;
-    // console.log("hiks btl", data.accessToken);
 
     const handleImgChange = (event: Event) => {
         const input = event.target as HTMLInputElement;
